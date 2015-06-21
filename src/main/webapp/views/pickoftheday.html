@@ -1,0 +1,90 @@
+<h3></h3>
+<div class="panel panel" >
+	<div class="row panel-heading bg-primary" >
+		<div class="col-sm-12">
+			<div>
+				<h4 class="panel-title ">Choice of the day - LCBO {{store.name}}</h4>{{store.address_line_1 + ' ' + store.city + ' ' + store.postal_code}}
+			</div>
+		</div>		
+	</div>
+	<div class="row panel-heading" >
+		<div class="col-sm-10">			
+		</div>
+	</div>
+	
+	<div class="panel-body">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">Previous Choices</div>
+        </div>
+		<form class="row">
+			<div class="col-md-8">
+				<div>
+					<div class="panel-heading">
+						<div >
+							<h1  class="panel-title" >{{beer.name}}</h1>
+						</div>						
+					</div>
+					<div class="panel-body ">
+                        <div class="row">
+                            <div class="col-sm-12"><img ng-src="{{beer.image_thumb_url}}" height="200" width="150"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">{{beer.package}}</div>
+                            <div class="col-sm-8"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">Style</div>
+                            <div class="col-sm-8">{{beer.style}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">{{beer.tasting_note}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">{{beer.serving_suggestion}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">Price</div>
+                            <div class="col-sm-8">${{beer.price_in_cents / 100}}</div>
+                        </div>
+					</div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-8"></div>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="saveBeerAsTried()">
+                                    <span class="glyphicon glyphicon-refresh"></span> Choose another
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<div class="col-md-4">
+                <div class="panel-body pre-scrollable historical-picks">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="alreadyPickedBeer in previousBeers">
+                            <div class="row" >
+                                <div class="col-md-4"><img ng-src="{{alreadyPickedBeer.image_thumb_url}}" height="80" width="60"></div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-12">{{alreadyPickedBeer.name}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">{{alreadyPickedBeer.style}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">{{alreadyPickedBeer.package}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+			</div>
+		</form>
+	</div>
+</div>
