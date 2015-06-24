@@ -14,11 +14,12 @@
 	
 	<div class="panel-body">
         <div class="row">
-            <div class="col-md-8"></div>
-            <div class="col-md-4">Previous Choices</div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3">Previous Choices</div>
+            <div class="col-md-3">Sorted by price <span class="glyphicon glyphicon-circle-arrow-down"></span> </div>
         </div>
 		<form class="row">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<div>
 					<div class="panel-heading">
 						<div >
@@ -63,7 +64,7 @@
                     </div>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
                 <div class="panel-body pre-scrollable historical-picks">
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="alreadyPickedBeer in previousBeers">
@@ -84,7 +85,29 @@
                         </li>
                     </ul>
                 </div>
-			</div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel-body pre-scrollable historical-picks">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="alreadyPickedBeer in previousBeersSortedByPrice">
+                            <div class="row" >
+                                <div class="col-md-4"><img ng-src="{{alreadyPickedBeer.image_thumb_url}}" height="80" width="60"></div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-12">{{alreadyPickedBeer.name}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">${{alreadyPickedBeer.price_in_cents / 100}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">{{alreadyPickedBeer.package}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 		</form>
 	</div>
 </div>

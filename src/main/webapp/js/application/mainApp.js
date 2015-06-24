@@ -55,6 +55,9 @@ mainApp.factory('BeerChooserService', ['$rootScope', '$http', function($rootScop
 		    },
             fetchPreviousChoices: function(){
                 return $http.get($rootScope.baseUrl + '/beer/get');
+            },
+            fetchPreviousChoicesSortedByPrice: function(){
+                return $http.get($rootScope.baseUrl + '/beer/get/sort/by/priceInCents/DESC');
             }
 		};
 }]);
@@ -98,9 +101,11 @@ mainApp.controller('BeerChooserController', ['$scope', '$location', 'BeerChooser
                 $scope.beer = beer;
             }
             $scope.fetchPreviousChoices();
+            $scope.fetchPreviousChoicesSortedByPrice();
         }).error(
             function() {
                 $scope.fetchPreviousChoices();
+                $scope.fetchPreviousChoicesSortedByPrice();
             }
         );
     };
@@ -118,6 +123,16 @@ mainApp.controller('BeerChooserController', ['$scope', '$location', 'BeerChooser
                 $scope.previousBeers = {};
             }else{
                 $scope.previousBeers = beers;
+            }
+        });
+    };
+    $scope.fetchPreviousChoicesSortedByPrice = function(){
+        var response = BeerChooserService.fetchPreviousChoicesSortedByPrice();
+        response.success(function(beers) {
+            if(typeof beers === 'undefined'){
+                $scope.previousBeersSortedByPrice = {};
+            }else{
+                $scope.previousBeersSortedByPrice = beers;
             }
         });
     };
